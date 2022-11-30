@@ -1,0 +1,18 @@
+h1,
+p {
+  font-family: Lato;
+}
+#sathu {
+  color: red;
+  outline-style: auto;
+  outline-color: aqua;
+  margin: 5px;
+  padding: 5px;
+  align-items: center;
+}
+.item {
+  background-color: #b3e3de;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 8px;
+}
