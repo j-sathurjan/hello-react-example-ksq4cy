@@ -27,3 +27,34 @@ function App() {
 }
 
 ReactDOM.render(<App />, document.getElementById('list'));
+
+class Hello extends React.Component {
+  state = {
+    name: 'Sathurjan',
+  };
+
+  render() {
+    return <h1>Hello {this.state.name}.</h1>;
+  }
+}
+
+ReactDOM.render(<Hello />, document.getElementById('stateEx'));
+
+class Counter extends React.Component {
+  state = {
+    counter: 0,
+  };
+  increament = () => {
+    this.setState({
+      counter: this.state.counter + 1,
+    });
+  };
+  render() {
+    return;
+    <div>
+      <h4>count App</h4>
+      <p>Count : {this.state.counter}</p>
+      <button>icreament</button>
+    </div>;
+  }
+}
