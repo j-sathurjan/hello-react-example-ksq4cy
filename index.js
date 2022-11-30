@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
+
 let user = 'Sathu';
 
 ReactDOM.render(
@@ -45,16 +46,30 @@ class Counter extends React.Component {
     counter: 0,
   };
   increament = () => {
-    this.setState({
-      counter: this.state.counter + 1,
-    });
+    this.setState({ counter: this.state.counter + 1 });
   };
   render() {
-    return;
-    <div>
-      <h4>count App</h4>
-      <p>Count : {this.state.counter}</p>
-      <button>icreament</button>
-    </div>;
+    return (
+      <div>
+        <p class="count">Count : {this.state.counter}</p>
+        <button onClick={this.increament}>Increment</button>
+      </div>
+    );
   }
 }
+
+ReactDOM.render(<Counter />, document.getElementById('counterApp'));
+
+function CounterApp() {
+  const [counter, setCounter] = useState(0);
+  function increment() {
+    setCounter(counter + 1);
+  }
+  return (
+    <div>
+      <p>Count : {counter}</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
+}
+ReactDOM.render(<CounterApp />, document.getElementById('counterApp2'));
