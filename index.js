@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
 
@@ -51,6 +51,9 @@ class Counter extends React.Component {
   componentDidMount() {
     this.setState({ counter: 42 });
   }
+  componentDidUpdate() {
+    console.log('Number of class clicks: ' + this.state.counter);
+  }
   render() {
     return (
       <div>
@@ -65,6 +68,9 @@ ReactDOM.render(<Counter />, document.getElementById('counterApp'));
 
 function CounterApp() {
   const [counter, setCounter] = useState(0);
+  useEffect(() => {
+    console.log('Number of functional clicks : ' + counter);
+  });
   function increment() {
     setCounter(counter + 1);
   }
