@@ -82,3 +82,31 @@ function CounterApp() {
   );
 }
 ReactDOM.render(<CounterApp />, document.getElementById('counterApp2'));
+
+function Toggle() {
+  const [val, setVal] = useState('ON');
+  function toggle() {
+    setVal(val == 'ON' ? 'OFF' : 'ON');
+  }
+  return <button onClick={toggle}>{val}</button>;
+}
+ReactDOM.render(<Toggle />, document.getElementById('toggle'));
+
+function Converter() {
+  const [km, setKm] = useState(0);
+  function handleChange(event) {
+    setKm(event.target.value);
+  }
+  function convert(km) {
+    return (km / 1.609).toFixed(2);
+  }
+  return (
+    <div>
+      <input type="text" value={km} onChange={handleChange} />
+      <p>
+        {km} km is {convert(km)} Miles
+      </p>
+    </div>
+  );
+}
+ReactDOM.render(<Converter />, document.getElementById('converter'));
