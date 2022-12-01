@@ -48,6 +48,9 @@ class Counter extends React.Component {
   increament = () => {
     this.setState({ counter: this.state.counter + 1 });
   };
+  componentDidMount() {
+    this.setState({ counter: 42 });
+  }
   render() {
     return (
       <div>
