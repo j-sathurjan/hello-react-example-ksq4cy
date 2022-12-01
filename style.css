@@ -19,3 +19,14 @@ p {
 .count {
   color: blue;
 }
+.converter {
+  color: blue;
+  background-color: aqua;
+  margin: 10px;
+  padding: 20px;
+}
+.form {
+  background-color: coral;
+  margin: 10px;
+  padding: 20px;
+}

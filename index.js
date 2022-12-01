@@ -94,14 +94,14 @@ ReactDOM.render(<Toggle />, document.getElementById('toggle'));
 
 function Converter() {
   const [km, setKm] = useState(0);
-  function handleChange(event) {
-    setKm(event.target.value);
+  function handleChange(e) {
+    setKm(e.target.value);
   }
   function convert(km) {
     return (km / 1.609).toFixed(2);
   }
   return (
-    <div>
+    <div class="converter">
       <input type="text" value={km} onChange={handleChange} />
       <p>
         {km} km is {convert(km)} Miles
@@ -110,3 +110,14 @@ function Converter() {
   );
 }
 ReactDOM.render(<Converter />, document.getElementById('converter'));
+
+function AddForm() {
+  const [num, setNum]=useState(0);
+  const [sum, setSum]=useState(0);
+  return <div class="form">
+    <input type=""text value={num} />
+    <button>Submit</button>
+    <p>The Sum Of submitted Numbers : {sum}</p>
+  </div>;
+}
+ReactDOM.render(<AddForm />, document.getElementById('addform'));
