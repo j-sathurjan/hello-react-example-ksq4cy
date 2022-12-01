@@ -112,12 +112,21 @@ function Converter() {
 ReactDOM.render(<Converter />, document.getElementById('converter'));
 
 function AddForm() {
-  const [num, setNum]=useState(0);
-  const [sum, setSum]=useState(0);
-  return <div class="form">
-    <input type=""text value={num} />
-    <button>Submit</button>
-    <p>The Sum Of submitted Numbers : {sum}</p>
-  </div>;
+  const [num, setNum] = useState(0);
+  const [sum, setSum] = useState(0);
+  function handleChange(e) {
+    setNum(e.target.value);
+  }
+  function handleSubmit(e) {
+    setSum(Number(num) + sum);
+    e.preventDefault();
+  }
+  return (
+    <form class="form" onSubmit={handleSubmit}>
+      <input type="number" value={num} onChange={handleChange} />
+      <input type="submit" value="Add" />
+      <p>The Sum Of submitted Numbers : {sum}</p>
+    </form>
+  );
 }
 ReactDOM.render(<AddForm />, document.getElementById('addform'));
