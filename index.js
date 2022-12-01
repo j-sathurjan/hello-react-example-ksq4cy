@@ -92,6 +92,7 @@ function Toggle() {
 }
 ReactDOM.render(<Toggle />, document.getElementById('toggle'));
 
+//km  to miles converter
 function Converter() {
   const [km, setKm] = useState(0);
   function handleChange(e) {
@@ -111,6 +112,7 @@ function Converter() {
 }
 ReactDOM.render(<Converter />, document.getElementById('converter'));
 
+//sum the numbers submitted by using form
 function AddForm() {
   const [num, setNum] = useState(0);
   const [sum, setSum] = useState(0);
@@ -130,3 +132,13 @@ function AddForm() {
   );
 }
 ReactDOM.render(<AddForm />, document.getElementById('addform'));
+
+//List Rendering using array
+const arr = ['Car', 'Bike', 'Three Wheeler', 'Lorry'];
+
+function MyList(props) {
+  const arr = props.data;
+  const listItems = arr.map((val, index) => <li key={index}>{val}</li>);
+  return <ul>{listItems}</ul>;
+}
+ReactDOM.render(<MyList data={arr} />, document.getElementById('mylist'));
