@@ -144,43 +144,49 @@ function MyList(props) {
 ReactDOM.render(<MyList data={arr} />, document.getElementById('mylist'));
 
 //contact manager
-const contacts = ['Ibrahim', 'Sathurjan', 'Gobishangar'];
-function AddPersonForm() {
-  const [person, setPerson] = useState('');
-  function handleSubmit(e) {
-    contacts.push({ person });
-    e.preventDefault();
+let contactList = ['Ibrahim', 'Sathurjan', 'Gobishangar'];
+function ContactManager(props) {
+  const [contacts, setContacts] = useState(props.data);
+
+  function AddPersonForm() {
+    const [person, setPerson] = useState('');
+    function handleSubmit(e) {
+      contactList.push(String(person));
+      e.preventDefault();
+    }
+    function handleChange(e) {
+      setPerson(e.target.value);
+    }
+    return (
+      <form class="contactForm" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Add the Name Here"
+          onChange={handleChange}
+          value={person}
+        />
+        <button type="submit" onSubmit={handleSubmit}>
+          Add
+        </button>
+      </form>
+    );
   }
-  function handleChange(e) {
-    setPerson(e.target.value);
+  function PeopleList() {
+    const listItems = contacts.map((val, index) => <li key={index}>{val}</li>);
+    return (
+      <div class="contactForm">
+        <ul class="conatctlist">{listItems}</ul>
+      </div>
+    );
   }
   return (
-    <form class="contactForm" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Add the Name Here"
-        onChange={handleChange}
-        value={person}
-      />
-      <button type="submit" onSubmit={handleSubmit}>
-        Add
-      </button>
-    </form>
-  );
-}
-function PeopleList(props) {
-  const arr = props.data;
-  const listItems = arr.map((val, index) => <li key={index}>{val}</li>);
-  return (
-    <div class="contactForm">
-      <ul class="conatctlist">{listItems}</ul>
+    <div>
+      <AddPersonForm />
+      <PeopleList />
     </div>
   );
 }
 ReactDOM.render(
-  <div>
-    <AddPersonForm />
-    <PeopleList data={contacts} />
-  </div>,
+  <ContactManager data={contactList} />,
   document.getElementById('contact')
 );
