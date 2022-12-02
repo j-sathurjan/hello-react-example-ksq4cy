@@ -146,9 +146,11 @@ ReactDOM.render(<MyList data={arr} />, document.getElementById('mylist'));
 //contact manager
 let contactList = ['Ibrahim', 'Sathurjan', 'Gobishangar'];
 
-function AddPersonForm() {
+function AddPersonForm(props) {
   const [person, setPerson] = useState('');
   function handleSubmit(e) {
+    props.handleSubmit(person);
+    setPerson('');
     e.preventDefault();
   }
   function handleChange(e) {
@@ -179,9 +181,12 @@ function PeopleList(props) {
 }
 function ContactManager(props) {
   const [contacts, setContacts] = useState(props.data);
+  function addPerson(name) {
+    setContacts([...contacts, name]);
+  }
   return (
     <div>
-      <AddPersonForm />
+      <AddPersonForm handleSubmit={addPerson} />
       <PeopleList data={contacts} />
     </div>
   );
