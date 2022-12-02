@@ -145,44 +145,44 @@ ReactDOM.render(<MyList data={arr} />, document.getElementById('mylist'));
 
 //contact manager
 let contactList = ['Ibrahim', 'Sathurjan', 'Gobishangar'];
+
+function AddPersonForm() {
+  const [person, setPerson] = useState('');
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+  function handleChange(e) {
+    setPerson(e.target.value);
+  }
+  return (
+    <form class="contactForm" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Add the Name Here"
+        onChange={handleChange}
+        value={person}
+      />
+      <button type="submit" onSubmit={handleSubmit}>
+        Add
+      </button>
+    </form>
+  );
+}
+function PeopleList(props) {
+  const arr = props.data;
+  const listItems = arr.map((val, index) => <li key={index}>{val}</li>);
+  return (
+    <div class="contactForm">
+      <ul class="conatctlist">{listItems}</ul>
+    </div>
+  );
+}
 function ContactManager(props) {
   const [contacts, setContacts] = useState(props.data);
-
-  function AddPersonForm() {
-    const [person, setPerson] = useState('');
-    function handleSubmit(e) {
-      contactList.push(String(person));
-      e.preventDefault();
-    }
-    function handleChange(e) {
-      setPerson(e.target.value);
-    }
-    return (
-      <form class="contactForm" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Add the Name Here"
-          onChange={handleChange}
-          value={person}
-        />
-        <button type="submit" onSubmit={handleSubmit}>
-          Add
-        </button>
-      </form>
-    );
-  }
-  function PeopleList() {
-    const listItems = contacts.map((val, index) => <li key={index}>{val}</li>);
-    return (
-      <div class="contactForm">
-        <ul class="conatctlist">{listItems}</ul>
-      </div>
-    );
-  }
   return (
     <div>
       <AddPersonForm />
-      <PeopleList />
+      <PeopleList data={contacts} />
     </div>
   );
 }
