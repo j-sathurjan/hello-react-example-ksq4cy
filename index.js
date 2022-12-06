@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import './style.css';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { connect } from 'react-redux';
+import ReduxCounterApp from './ReduxCounterApp';
+import './style.css';
 
 let user = 'Sathu';
 
@@ -199,23 +199,8 @@ ReactDOM.render(
   document.getElementById('contact')
 );
 
-/* react-redux counter App */
-function reduxCounterApp(props) {
-  function handleClick() {
-    props.incrementCounter(1);
-  }
-  return (
-    <div>
-      <p>{props.count}</p>
-      <button onClick={handleClick}>Increment</button>
-    </div>
-  );
-}
+/* redux counter app*/
 
-// Action creator
-function incrementCounter(num) {
-  return { type: 'INCREMENT', num: num };
-}
 const initialState = { count: 0 };
 // Reducer function
 function reducer(state = initialState, action) {
@@ -226,25 +211,11 @@ function reducer(state = initialState, action) {
       return state;
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    count: state.count,
-  };
-}
-
-const mapDispatchToProps = {
-  incrementCounter,
-};
 const store = createStore(reducer);
-const reduxCounter = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(reduxCounterApp);
 
 const el = (
   <Provider store={store}>
-    <reduxCounter />
+    <ReduxCounterApp />
   </Provider>
 );
 
