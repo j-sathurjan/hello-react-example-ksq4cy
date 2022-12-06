@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './style.css';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import { connect } from 'react-redux';
 
 let user = 'Sathu';
 
@@ -220,4 +221,14 @@ const el = (
   </Provider>
 );
 
+function mapStateToProps(state) {
+  return {
+    count: state.count
+  };
+}
+function connect(mapStateToProps, mapDispatchToProps)
+
+const mapDispatchToProps = {
+  incrementCounter
+}
 ReactDOM.render(el, document.getElementById('reduxCounterApp'));
