@@ -220,3 +220,4 @@ const el = (
 );
 
 ReactDOM.render(el, document.getElementById('reduxCounterApp'));
+

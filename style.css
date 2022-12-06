@@ -46,3 +46,10 @@ p {
   padding: 3px;
   background-color: cornflowerblue;
 }
+.reduxIncrement {
+  margin: 10px;
+  color: blue;
+  background-color: aqua;
+  padding: 10px;
+  align-content: center;
+}

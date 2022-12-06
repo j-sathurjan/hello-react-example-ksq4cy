@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import './style.css';
 
 /* react-redux counter App */
 
@@ -13,7 +14,7 @@ function ReduxCounterApp(props) {
     props.incrementCounter(1);
   }
   return (
-    <div>
+    <div class="reduxIncrement">
       <p>{props.count}</p>
       <button onClick={handleClick}>Increment</button>
     </div>
