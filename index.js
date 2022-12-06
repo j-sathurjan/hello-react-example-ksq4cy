@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
 let user = 'Sathu';
 
@@ -195,3 +197,27 @@ ReactDOM.render(
   <ContactManager data={contactList} />,
   document.getElementById('contact')
 );
+
+function incrementCounter(num) {
+  return {
+    type: 'INCREMENT',
+    num: num,
+  };
+}
+const initialState = { count: 0 };
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { count: state.count + action.num };
+    default:
+      return state;
+  }
+}
+const store = createStore(reducer);
+const el = (
+  <Provider store={store}>
+    <Counter />
+  </Provider>
+);
+
+ReactDOM.render(el, document.getElementById('reduxCounterApp'));
