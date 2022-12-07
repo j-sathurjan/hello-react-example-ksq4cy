@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import ReduxCounterApp from './ReduxCounterApp';
 import './style.css';
+import AddPersonForm from './components/AddPersonForm';
+import PeopleList from './components/PeopleList';
 
 let user = 'Sathu';
 
@@ -200,7 +202,7 @@ ReactDOM.render(
 );
 
 /* redux counter app*/
-
+/*
 const initialState = { count: 0 };
 // Reducer function
 function reducer(state = initialState, action) {
@@ -220,4 +222,24 @@ const el = (
 );
 
 ReactDOM.render(el, document.getElementById('reduxCounterApp'));
+*/
 
+//contactManager with redux
+const initialState = { contacts: ['sathu', 'Thanu', 'vithu'] };
+//reducer funtion
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case 'ADD_PERSON':
+      return { ...state, contacts: [...state.contacts, action.data] };
+    default:
+      return state;
+  }
+}
+const store = createStore(reducer);
+ReactDOM.render(
+  <Provider store={store}>
+    <AddPersonForm />
+    <PeopleList />
+  </Provider>,
+  document.getElementById('contactManager')
+);
