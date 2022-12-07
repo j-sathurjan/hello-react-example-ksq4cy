@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import './style.css';
+import '../style.css';
 import { addPerson } from '../actions';
 import { connect } from 'react-redux';
 
@@ -18,7 +18,7 @@ function AddPersonForm() {
     e.preventDefault();
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} class="contactForm">
       <input
         type="text"
         placeholder="enter the name here"

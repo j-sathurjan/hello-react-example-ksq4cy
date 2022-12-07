@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import ReduxCounterApp from './ReduxCounterApp';
-import './style.css';
 import AddPersonForm from './components/AddPersonForm';
 import PeopleList from './components/PeopleList';
+import './style.css';
 
 let user = 'Sathu';
 
@@ -147,7 +147,7 @@ function MyList(props) {
   return <ul>{listItems}</ul>;
 }
 ReactDOM.render(<MyList data={arr} />, document.getElementById('mylist'));
-
+/*
 //contact manager
 let contactList = ['Ibrahim', 'Sathurjan', 'Gobishangar'];
 
@@ -200,7 +200,7 @@ ReactDOM.render(
   <ContactManager data={contactList} />,
   document.getElementById('contact')
 );
-
+*/
 /* redux counter app*/
 /*
 const initialState = { count: 0 };
@@ -241,5 +241,5 @@ ReactDOM.render(
     <AddPersonForm />
     <PeopleList />
   </Provider>,
-  document.getElementById('contactManager')
+  document.getElementById('contact')
 );
